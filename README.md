@@ -1,9 +1,9 @@
 # Denova
-# 🚀 Denova API
+
 
 API REST desarrollada con Flask para la gestión de usuarios, leads, asesorías y automatización básica con SYRA.
 
----
+
 
 ## 📦 Requisitos
 
@@ -12,9 +12,9 @@ Antes de empezar, se necesita tener instalado:
 * Python (3.8 o superior)
 * Git
 
----
 
-## ⬇️ 1. Clonar el repositorio
+
+## 1. Clonar el repositorio
 
 Abre la terminal y ejecuta:
 
@@ -28,17 +28,17 @@ Luego entra a la carpeta:
 cd api-denova
 ```
 
----
 
-## 🧪 2. Crear entorno virtual
+
+##  2. Crear entorno virtual
 
 ```bash
 python -m venv venv
 ```
 
----
 
-## ▶️ 3. Activar entorno virtual
+
+##  3. Activar entorno virtual
 
 ### Windows (PowerShell)
 
@@ -52,9 +52,9 @@ python -m venv venv
 venv\Scripts\activate
 ```
 
----
 
-## 📦 4. Instalar dependencias
+
+## 4. Instalar dependencias
 
 ```bash
 pip install flask
@@ -68,15 +68,15 @@ pip install -r requirements.txt
 
 ---
 
-## ▶️ 5. Ejecutar el proyecto
+## 5. Ejecutar el proyecto
 
 ```bash
 python app.py
 ```
 
----
 
-## 🌐 6. Abrir en el navegador
+
+## 6. Abrir en el navegador
 
 Ir a:
 
@@ -84,9 +84,9 @@ Ir a:
 http://localhost:5000
 ```
 
----
 
-## 🧪 7. Probar endpoints
+
+## 7. Probar endpoints
 
 Ejemplo crear usuario:
 
@@ -96,9 +96,9 @@ curl -X POST http://localhost:5000/api/usuarios \
 -d "{\"nombre\":\"Test\"}"
 ```
 
----
 
-## 📌 Endpoints disponibles
+
+## Endpoints disponibles
 
 * `/api/usuarios`
 * `/api/leads`
@@ -107,7 +107,7 @@ curl -X POST http://localhost:5000/api/usuarios \
 
 ---
 
-## 💡 Notas
+## Notas
 
 * El proyecto usa una base de datos simulada (listas en memoria)
 * Al reiniciar el servidor, los datos se pierden
@@ -115,6 +115,6 @@ curl -X POST http://localhost:5000/api/usuarios \
 
 ---
 
-## 🚀 Autor
+## Autor
 
 Proyecto desarrollado como parte de la solución Denova
