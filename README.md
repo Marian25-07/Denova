@@ -1,120 +1,44 @@
-# Denova
-
+Denova API
 
 API REST desarrollada con Flask para la gestión de usuarios, leads, asesorías y automatización básica con SYRA.
+Forma parte de la solución Denova, una plataforma orientada a la captación, seguimiento y conversión de leads para clínicas odontológicas.
 
+📖 Descripción
 
+Denova es una solución tecnológica que integra automatización e inteligencia artificial para optimizar procesos comerciales en clínicas dentales.
 
-## 📦 Requisitos
+Esta API permite gestionar la lógica principal del sistema, incluyendo:
+
+Registro de usuarios
+Gestión de leads
+Agendamiento de asesorías
+Automatización básica de interacción (SYRA)
+
+El proyecto está diseñado como una base inicial (MVP), con enfoque en evolución hacia una arquitectura más robusta que incluya integración con bases de datos SQL y NoSQL.
+
+🧠 Enfoque Tecnológico
+
+Actualmente el proyecto funciona con almacenamiento en memoria, pero está diseñado para evolucionar a una arquitectura híbrida:
+
+SQL (Relacional):
+Usuarios
+Leads
+Asesorías
+Seguimiento
+NoSQL (Futuro):
+Conversaciones (chat / WhatsApp)
+Logs de interacción (SYRA)
+Eventos de usuario
+Formularios dinámicos
+⚙️ Funcionalidades
+CRUD de usuarios
+Gestión de leads
+Registro de asesorías
+Simulación de interacción con SYRA
+Endpoints REST para integración con frontend
+📦 Requisitos
 
 Antes de empezar, se necesita tener instalado:
 
-* Python (3.8 o superior)
-* Git
-
-
-
-## 1. Clonar el repositorio
-
-Abre la terminal y ejecuta:
-
-```bash
-git clone https://github.com/TU-USUARIO/api-denova.git
-```
-
-Luego entra a la carpeta:
-
-```bash
-cd api-denova
-```
-
-
-
-##  2. Crear entorno virtual
-
-```bash
-python -m venv venv
-```
-
-
-
-##  3. Activar entorno virtual
-
-### Windows (PowerShell)
-
-```bash
-.\venv\Scripts\activate
-```
-
-### Windows (CMD)
-
-```bash
-venv\Scripts\activate
-```
-
-
-
-## 4. Instalar dependencias
-
-```bash
-pip install flask
-```
-
-*(o si existe requirements.txt)*
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-## 5. Ejecutar el proyecto
-
-```bash
-python app.py
-```
-
-
-
-## 6. Abrir en el navegador
-
-Ir a:
-
-```
-http://localhost:5000
-```
-
-
-
-## 7. Probar endpoints
-
-Ejemplo crear usuario:
-
-```bash
-curl -X POST http://localhost:5000/api/usuarios \
--H "Content-Type: application/json" \
--d "{\"nombre\":\"Test\"}"
-```
-
-
-
-## Endpoints disponibles
-
-* `/api/usuarios`
-* `/api/leads`
-* `/api/asesorias`
-* `/api/syra`
-
----
-
-## Notas
-
-* El proyecto usa una base de datos simulada (listas en memoria)
-* Al reiniciar el servidor, los datos se pierden
-* Está pensado para pruebas y demostración
-
----
-
-## Autor
-
-Proyecto desarrollado como parte de la solución Denova
+Python 3.8 o superior
+Git
