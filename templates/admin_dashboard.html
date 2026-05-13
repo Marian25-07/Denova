@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Denova Admin Dashboard</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #0d6efd;
+      --brand-dark: #0b5ed7;
+      --surface: #f8f9ff;
+      --panel: #ffffff;
+      --text-primary: #101828;
+      --text-muted: #6c757d;
+      --border: rgba(15, 23, 42, 0.08);
+    }
+
+    body {
+      background: var(--surface);
+      color: var(--text-primary);
+      font-family: "Inter", system-ui, sans-serif;
+    }
+
+    .sidebar {
+      min-height: 100vh;
+      background: #ffffff;
+      border-right: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+    }
+
+    .sidebar .nav-link {
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      border-radius: 0.85rem;
+      padding: 0.85rem 1rem;
+    }
+
+    .sidebar .nav-link.active,
+    .sidebar .nav-link:hover {
+      color: var(--brand);
+      background: rgba(13, 110, 253, 0.08);
+    }
+
+    .topbar {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+    }
+
+    .metric-card {
+      border: none;
+      border-radius: 1.25rem;
+      background: #ffffff;
+      box-shadow: 0 24px 50px rgba(15, 23, 42, 0.08);
+    }
+
+    .metric-card .icon {
+      width: 3rem;
+      height: 3rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 1rem;
+      background: rgba(13, 110, 253, 0.12);
+      color: var(--brand);
+      font-size: 1.2rem;
+    }
+
+    .table-card {
+      border-radius: 1.5rem;
+      background: #ffffff;
+      box-shadow: 0 24px 50px rgba(15, 23, 42, 0.08);
+      border: none;
+    }
+
+    .section-title {
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand);
+      font-weight: 700;
+    }
+
+    .cta-card {
+      border-radius: 1.5rem;
+      background: linear-gradient(135deg, rgba(13,110,253,0.9), rgba(0, 68, 255, 0.95));
+      color: #fff;
+    }
+
+    .cta-card .btn-light {
+      color: var(--brand-dark);
+      background: #f8f9ff;
+      font-weight: 700;
+    }
+
+    .card-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .small-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row g-0">
+      <aside class="col-12 col-xl-3 sidebar d-none d-xl-block">
+        <div class="mb-5">
+          <a href="#" class="d-flex align-items-center text-decoration-none">
+            <div class="me-3 bg-primary text-white rounded-3 p-3">D</div>
+            <div>
+              <h5 class="mb-0">Denova</h5>
+              <small class="text-muted">Admin panel</small>
+            </div>
+          </a>
+        </div>
+        <nav class="nav flex-column">
+          <a class="nav-link active" href="#">Dashboard</a>
+          <a class="nav-link" href="#">Usuarios</a>
+          <a class="nav-link" href="#">Leads</a>
+          <a class="nav-link" href="#">Asesorías</a>
+          <a class="nav-link" href="#">SYRA</a>
+          <a class="nav-link" href="#">Reportes</a>
+        </nav>
+      </aside>
+      <main class="col-12 col-xl-9">
+        <header class="topbar d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3">
+          <div>
+            <p class="section-title mb-2">Panel de administración</p>
+            <h1 class="h3 mb-0">Resumen de desempeño</h1>
+          </div>
+          <div class="d-flex gap-2">
+            <button class="btn btn-outline-secondary">Notificaciones</button>
+            <button class="btn btn-primary">Nuevo reporte</button>
+          </div>
+        </header>
+
+        <section class="p-4 p-xl-5">
+          <div class="row g-4 mb-4">
+            <div class="col-sm-6 col-xl-3">
+              <div class="metric-card p-4 h-100">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                  <span class="icon">👥</span>
+                  <span class="badge bg-success">+12% mensual</span>
+                </div>
+                <h2 class="h3">1,280</h2>
+                <p class="card-label mb-0">Total de usuarios</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <div class="metric-card p-4 h-100">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                  <span class="icon">📈</span>
+                  <span class="badge bg-primary">3,420</span>
+                </div>
+                <h2 class="h3">4,520</h2>
+                <p class="card-label mb-0">Leads generados</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <div class="metric-card p-4 h-100">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                  <span class="icon">🗓️</span>
+                  <span class="badge bg-warning text-dark">14 en agenda</span>
+                </div>
+                <h2 class="h3">86</h2>
+                <p class="card-label mb-0">Asesorías agendadas</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <div class="metric-card p-4 h-100">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                  <span class="icon">🤖</span>
+                  <span class="badge bg-info text-dark">Alta actividad</span>
+                </div>
+                <h2 class="h3">1,150</h2>
+                <p class="card-label mb-0">Interacciones SYRA</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-xl-8">
+              <div class="table-card p-4 h-100">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                  <div>
+                    <p class="section-title mb-2">Actividad reciente</p>
+                    <h2 class="h5 mb-0">Últimas acciones del equipo</h2>
+                  </div>
+                  <button class="btn btn-sm btn-outline-primary">Ver todo</button>
+                </div>
+                <div class="table-responsive">
+                  <table class="table align-middle mb-0">
+                    <thead>
+                      <tr>
+                        <th>Fecha</th>
+                        <th>Evento</th>
+                        <th>Usuario</th>
+                        <th>Estado</th>
+                        <th>Acción</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>12 May 2026</td>
+                        <td>Nuevo lead registrado</td>
+                        <td>Carla López</td>
+                        <td><span class="badge bg-success">Completado</span></td>
+                        <td><a href="#" class="text-primary">Ver</a></td>
+                      </tr>
+                      <tr>
+                        <td>12 May 2026</td>
+                        <td>Asesoría confirmada</td>
+                        <td>Clínica Sonrisa</td>
+                        <td><span class="badge bg-warning text-dark">Pendiente</span></td>
+                        <td><a href="#" class="text-primary">Ver</a></td>
+                      </tr>
+                      <tr>
+                        <td>11 May 2026</td>
+                        <td>SYRA chatbot activo</td>
+                        <td>Dra. Valeria</td>
+                        <td><span class="badge bg-info text-dark">En curso</span></td>
+                        <td><a href="#" class="text-primary">Ver</a></td>
+                      </tr>
+                      <tr>
+                        <td>11 May 2026</td>
+                        <td>Campaña de lead lanzada</td>
+                        <td>Andrés Castro</td>
+                        <td><span class="badge bg-success">Completado</span></td>
+                        <td><a href="#" class="text-primary">Ver</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4">
+              <div class="card cta-card p-4 h-100">
+                <p class="section-title text-white mb-2">Proyección</p>
+                <h2 class="h4 text-white mb-3">Optimiza la clínica con insights inteligentes</h2>
+                <p class="small-text mb-4">Revisa los resultados de SYRA, monitorea leads y lidera la experiencia del paciente con un panel unificado.</p>
+                <a href="#" class="btn btn-light btn-lg">Crear nueva campaña</a>
+              </div>
+              <div class="card metric-card p-4 mt-4">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                  <div>
+                    <p class="card-label mb-1">Tiempo promedio de respuesta</p>
+                    <h3 class="h4 mb-0">2h 12m</h3>
+                  </div>
+                  <span class="icon">⏱️</span>
+                </div>
+                <p class="small-text mb-0">Mantén la atención de prospectos con respuestas rápidas y seguimiento automatizado.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

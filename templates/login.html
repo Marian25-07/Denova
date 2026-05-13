@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Denova | Iniciar sesión</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #0d6efd;
+      --surface: #f4f7ff;
+      --card: #ffffff;
+      --text-dark: #1f2937;
+      --text-muted: #6c757d;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #eff4ff 0%, #fdfcff 100%);
+      font-family: "Inter", system-ui, sans-serif;
+      color: var(--text-dark);
+    }
+
+    .login-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 0;
+    }
+
+    .login-card {
+    border: none;
+    border-radius: 24px;
+    box-shadow: 0 28px 80px rgba(15, 23, 42, 0.12);
+    overflow: hidden;
+    max-width: 1000px;
+    width: 100%;
+    margin: auto;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      color: var(--brand);
+      margin-bottom: 1.5rem;
+    }
+
+    .brand-badge span {
+      width: 2.25rem;
+      height: 2.25rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.85rem;
+      background: rgba(13, 110, 253, 0.12);
+      color: var(--brand);
+      font-size: 1rem;
+    }
+
+    .login-heading {
+      font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+      line-height: 1.05;
+      margin-bottom: 0.75rem;
+    }
+
+    .login-text {
+      color: var(--text-muted);
+      max-width: 38rem;
+    }
+
+    .form-control:focus {
+      box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.18);
+    }
+
+    .login-hero {
+      background: linear-gradient(180deg, rgba(13,110,253,0.08) 0%, #ffffff 100%);
+    }
+
+    .login-hero h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .login-hero p {
+      color: var(--text-muted);
+    }
+
+    .action-link {
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-wrapper">
+    <div class="container">
+      <div class="row justify-content-center align-items-center g-4">
+        <div class="col-lg-6 col-xl-5">
+          <div class="card login-card overflow-hidden">
+            <div class="row g-0">
+              <div class="col-md-6 login-hero p-5 d-flex flex-column justify-content-center">
+                <div class="brand-badge"><span>D</span>Denova</div>
+                <h3>Bienvenido a tu clínica inteligente</h3>
+                <p>Accede al panel Denova y gestiona leads, citas y tu asistente SYRA desde un solo lugar.</p>
+              </div>
+              <div class="col-md-6 p-5">
+                <div class="mb-4">
+                  <h1 class="login-heading">Iniciar sesión</h1>
+                  <p class="login-text">Ingresa con tu correo y contraseña para continuar con la gestión digital de tu clínica dental.</p>
+                </div>
+                <form id="login-form">
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control form-control-lg" id="email" placeholder="tu@clinica.com" required>
+                  </div>
+                  <div class="mb-4">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control form-control-lg" id="password" placeholder="Contraseña segura" required>
+                  </div>
+                  <div class="d-grid mb-3">
+                    <button type="submit" class="btn btn-primary btn-lg">Iniciar sesión</button>
+                  </div>
+                </form>
+                <p class="text-center mb-0">¿Deseas volver al inicio? <a href="/" class="action-link">Regresar a Denova</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const loginForm = document.getElementById('login-form');
+
+    if (loginForm) {
+      loginForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        if (!email || !password) {
+          alert('Por favor ingresa correo y contraseña.');
+          return;
+        }
+
+        try {
+          const response = await fetch('/auth/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+          });
+
+          const result = await response.json();
+
+          if (response.ok) {
+    localStorage.setItem("token", result.access_token);
+    window.location.href = "/admin";
+        } else {
+            alert(result.message || 'Error de inicio de sesión.');
+          }
+        } catch (error) {
+          console.error('Login error:', error);
+          alert('No se pudo conectar con el servidor. Intenta de nuevo.');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

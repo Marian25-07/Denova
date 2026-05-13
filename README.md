@@ -1,149 +1,325 @@
-Denova API
+# 🦷 Denova
 
-API REST desarrollada con Flask para la gestión de usuarios, leads, asesorías y automatización básica con SYRA.
-Forma parte de la solución Denova, una plataforma orientada a la captación, seguimiento y conversión de leads para clínicas odontológicas.
+**Denova** es una plataforma web desarrollada con **Flask**, diseñada para la gestión inteligente de clínicas dentales.
 
-📖 Descripción
+Integra una arquitectura híbrida utilizando:
 
-Denova es una solución tecnológica que integra automatización e inteligencia artificial para optimizar procesos comerciales en clínicas dentales.
+- **MongoDB Atlas** → almacenamiento NoSQL
+- **SQLite** → almacenamiento relacional
+- **JWT Authentication** → autenticación segura
+- **RBAC (Role Based Access Control)** → control de acceso por roles
+- **Bootstrap 5** → interfaz moderna y responsive
 
-Esta API permite gestionar la lógica principal del sistema, incluyendo:
+---
 
-Registro de usuarios
-Gestión de leads
-Agendamiento de asesorías
-Automatización básica de interacción (SYRA)
+# 📌 Características principales
 
-El proyecto está diseñado como una base inicial (MVP), con enfoque en evolución hacia una arquitectura más robusta que incluya integración con bases de datos SQL y NoSQL.
+## 🔐 Sistema de autenticación
+- Registro de usuarios
+- Inicio de sesión seguro
+- Contraseñas cifradas
+- Tokens JWT
+- Protección de rutas
 
-🧠 Enfoque Tecnológico
+---
 
-Actualmente el proyecto funciona con una arquitectura híbrida:
+## 👥 Gestión de roles
+El sistema distingue entre:
 
-- **MongoDB Atlas**: Base de datos NoSQL para usuarios, leads y asesorías
-- **SQLite**: Base de datos SQL para logs de interacciones SYRA
-- **Flask**: Framework web para la API REST
-- **Pymongo**: Driver para MongoDB
+### Administrador
+Puede:
 
-⚙️ Funcionalidades
-- ✅ CRUD de usuarios (MongoDB)
-- ✅ Gestión de leads (MongoDB)
-- ✅ Registro de asesorías (MongoDB)
-- ✅ Simulación de interacción con SYRA (SQLite logs)
-- ✅ Endpoints REST para integración con frontend
-- ✅ **Endpoint híbrido SQL + NoSQL** para estadísticas de usuario
+- Acceder al panel administrativo
+- Gestionar usuarios
+- Consultar estadísticas
+- Administrar leads
+- Revisar actividad del sistema
 
-## 📊 Evidencias de Ejecución
+### Doctor
+Puede:
 
-### Conexión a MongoDB Atlas
+- Acceder a funciones limitadas
+- Consultar información asignada
+- Interactuar con SYRA
+
+---
+
+## 🤖 Chatbot SYRA
+Asistente inteligente capaz de:
+
+- Responder consultas
+- Registrar interacciones
+- Guardar historial en SQLite
+- Simular atención automatizada
+
+---
+
+## 📊 Dashboard administrativo
+Panel visual con:
+
+- Métricas
+- Actividad reciente
+- Estadísticas de usuarios
+- Gestión general del sistema
+
+---
+
+## 🗄️ Base de datos híbrida
+
+### MongoDB Atlas
+Almacena:
+
+- Usuarios
+- Leads
+- Asesorías
+
+### SQLite
+Almacena:
+
+- Logs de conversaciones con SYRA
+- Historial de interacciones
+
+---
+
+# 🧱 Tecnologías utilizadas
+
+- Python 3.11+
+- Flask
+- Flask-JWT-Extended
+- MongoDB Atlas
+- PyMongo
+- SQLite3
+- Bootstrap 5
+- HTML5
+- CSS3
+- JavaScript
+
+---
+
+# 📂 Estructura del proyecto
+
 ```bash
-✅ Conexión exitosa a MongoDB Atlas
-Bases de datos: ['bd1', 'sample_mflix', 'admin', 'local']
+Denova/
+│
+├── app.py
+├── config.py
+├── README.md
+│
+├── routes/
+│   └── auth_routes.py
+│
+├── database/
+│   └── sqlite_db.py
+│
+├── utils/
+│   └── decorators.py
+│
+├── templates/
+│   ├── index.html
+│   ├── login.html
+│   └── admin.html
+│
+└── instance/
+    └── app.db
 ```
 
-### Endpoint Híbrido (SQL + NoSQL)
+---
+
+# ⬇️ Cómo descargar el proyecto
+
+## Opción 1: Descargar ZIP
+
+1. Ir al repositorio
+2. Clic en **Code**
+3. Seleccionar **Download ZIP**
+4. Extraer archivos
+
+---
+
+## Opción 2: Clonar repositorio
+
+```bash
+git clone URL_DEL_REPOSITORIO
+```
+
+Entrar al proyecto:
+
+```bash
+cd Denova
+```
+
+---
+
+# ⚙️ Instalación
+
+Instalar dependencias:
+
+```bash
+pip install flask
+pip install pymongo
+pip install flask-jwt-extended
+pip install werkzeug
+```
+
+O:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+# 🛠 Configuración
+
+Editar:
+
+```python
+config.py
+```
+
+Configurar:
+
+```python
+MONGO_URI
+SECRET_KEY
+JWT_SECRET_KEY
+```
+
+Ejemplo:
+
+```python
+MONGO_URI = "tu_uri_mongodb"
+SECRET_KEY = "clave_secreta"
+JWT_SECRET_KEY = "jwt_clave"
+```
+
+---
+
+# ▶️ Cómo ejecutar el proyecto
+
+Desde terminal:
+
+```bash
+python app.py
+```
+
+Si todo funciona aparecerá:
+
+```bash
+Running on http://127.0.0.1:5000
+```
+
+Abrir navegador:
+
+```bash
+http://127.0.0.1:5000
+```
+
+---
+
+# 🔑 Registro de usuario
+
+Endpoint:
+
+```bash
+/auth/register
+```
+
+Ejemplo JSON:
+
 ```json
 {
-  "data": {
-    "usuario": {
-      "id": 1,
-      "nombre": "Dr. Ana López",
-      "email": "ana.lopez@clinica.com"
-    },
-    "estadisticas": {
-      "leads_generados": 2,
-      "asesorias_agendadas": 1,
-      "interacciones_syra": 0,
-      "ultima_interaccion_syra": null
-    }
-  },
-  "mensaje": "Estadísticas combinadas SQL + NoSQL"
+  "nombre": "Admin",
+  "email": "admin@test.com",
+  "password": "123456",
+  "role": "admin"
 }
 ```
 
-📦 Requisitos
+---
 
-Antes de empezar, se necesita tener instalado:
+# 🔓 Inicio de sesión
 
-Python 3.8 o superior
-Git
-Cuenta en MongoDB Atlas (para la base de datos)
+Ruta:
 
-🚀 Instalación
+```bash
+/login
+```
 
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/tu-usuario/denova-api.git
-   cd denova-api
-   ```
+Credenciales ejemplo:
 
-2. Crea un entorno virtual:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # En Windows: venv\Scripts\activate
-   ```
-   > **Nota**: El entorno virtual (`venv/`) no se incluye en el repositorio porque contiene dependencias específicas del sistema. Se recrea fácilmente con `requirements.txt`.
+```txt
+admin@test.com
+123456
+```
 
-3. Instala las dependencias:
-   ```bash
-   pip install -r requirements.txt
-   ```
+---
 
-4. Configura MongoDB Atlas:
-   - Crea un cluster en MongoDB Atlas
-   - Obtén tu connection string
-   - Actualiza la variable `MONGO_URI` en `app.py` (o usa variables de entorno)
+# 📡 Endpoints disponibles
 
-5. Ejecuta la aplicación:
-   ```bash
-   python src/app.py
-   ```
+## Usuarios
 
-La API estará disponible en `http://127.0.0.1:5000/`
+```bash
+/api/usuarios
+```
 
-📡 Endpoints
+---
 
-### Usuarios
-- `GET /api/usuarios` - Lista todos los usuarios
-- `POST /api/usuarios` - Crea un nuevo usuario
-  ```json
-  {
-    "nombre": "Dr. Juan Pérez",
-    "email": "juan.perez@clinica.com",
-    "telefono": "555-0123"
-  }
-  ```
+## Leads
 
-### Leads
-- `GET /api/leads` - Lista todos los leads
-- `POST /api/leads` - Crea un nuevo lead
-  ```json
-  {
-    "id_usuario": 1,
-    "origen": "web"
-  }
-  ```
+```bash
+/api/leads
+```
 
-### Asesorías
-- `GET /api/asesorias` - Lista todas las asesorías
-- `POST /api/asesorias` - Crea una nueva asesoría
-  ```json
-  {
-    "id_usuario": 1,
-    "fecha": "2024-01-20"
-  }
-  ```
+---
 
-### SYRA (IA)
-- `POST /api/syra` - Interacción con el asistente virtual
-  ```json
-  {
-    "mensaje": "Hola, quiero información sobre precios",
-    "id_usuario": 1
-  }
-  ```
+## Asesorías
 
-### Estadísticas Híbridas (SQL + NoSQL)
-- `GET /api/usuario/<id>/estadisticas` - Estadísticas combinadas del usuario
-  - **MongoDB**: Datos del usuario, leads, asesorías
-  - **SQLite**: Logs de interacciones con SYRA
+```bash
+/api/asesorias
+```
+
+---
+
+## Chatbot SYRA
+
+```bash
+/api/syra
+```
+
+---
+
+## Estadísticas híbridas
+
+```bash
+/api/usuario/<id>/estadisticas
+```
+
+---
+
+# 🔒 Seguridad implementada
+
+- JWT Authentication
+- Contraseñas cifradas
+- Validación de roles
+- Protección de endpoints
+- Control de acceso por permisos
+
+---
+
+# 🚀 Mejoras futuras
+
+- Dashboard doctor
+- CRUD visual completo
+- Reportes exportables
+- IA avanzada para SYRA
+- Despliegue en producción
+- Integración con WhatsApp API
+
+---
+
+# 👩‍💻 Autora
+
+**Mariangel**
+
+Proyecto académico y profesional desarrollado como plataforma inteligente de gestión dental.

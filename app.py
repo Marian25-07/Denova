@@ -1,12 +1,53 @@
-from flask import Flask, jsonify, request
+from utils.decorators import role_required
+from flask import Flask, jsonify, request, render_template
 from pymongo import MongoClient
-app = Flask(__name__)
+import sqlite3
+from config import Config
+from flask_jwt_extended import JWTManager, jwt_required
+from routes.auth_routes import auth
 
-client = MongoClient('mongodb+srv://Kamilo:1234KL@denova.kdqkau6.mongodb.net/?appName=Denova')
+
+app = Flask(__name__)
+app.config.from_object(Config)
+
+jwt = JWTManager(app)
+
+app.register_blueprint(auth, url_prefix='/auth')
+
+# =========================
+# CONEXION MONGO (NoSQL)
+# =========================
+
+client = MongoClient(app.config['MONGO_URI'])
 db = client['bd1']
 collection_usuarios = db['usuarios']
 collection_leads = db['leads']
 collection_asesorias = db['asesorias']
+
+# =========================
+# CONEXION SQLITE (SQL)
+# =========================
+
+def get_db():
+    conn = sqlite3.connect(Config.SQLITE_DATABASE)
+    conn.row_factory = sqlite3.Row
+    return conn
+
+# Crear tabla de logs si no existe
+def init_db():
+    with get_db() as conn:
+        conn.execute('''
+            CREATE TABLE IF NOT EXISTS logs_syra (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                id_usuario INTEGER,
+                mensaje TEXT,
+                respuesta TEXT,
+                fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        ''')
+        conn.commit()
+
+init_db()
 
 # =========================
 # BASE DE DATOS (SIMULADA) - AHORA USANDO MONGODB
@@ -36,22 +77,24 @@ def respuesta_error(mensaje="error"):
 # =========================
 @app.route('/')
 def inicio():
-    return jsonify({
-        "api": "Denova API 🚀",
-        "version": "1.0",
-        "endpoints": [
-            "/api/usuarios",
-            "/api/leads",
-            "/api/asesorias",
-            "/api/syra"
-        ]
-    })
+    return render_template("index.html")
+
+@app.route('/login')
+def login_page():
+    return render_template("login.html")
+
+@app.route('/admin')
+@jwt_required()
+@role_required("admin")
+def admin_dashboard():
+    return render_template("admin_dashboard.html")
 
 # =========================
 # USUARIOS
 # =========================
 
 @app.route('/api/usuarios', methods=['GET'])
+@role_required("admin")
 def get_usuarios():
     usuarios = list(collection_usuarios.find({}, {'_id': 0}))
     return respuesta_ok(usuarios)
@@ -127,14 +170,40 @@ def crear_asesoria():
     return respuesta_ok(nueva, "Asesoría agendada")
 
 # =========================
-# SYRA (IA SIMULADA)
+# ENDPOINT HÍBRIDO (SQL + NoSQL)
 # =========================
+
+@app.route('/api/usuario/<int:id_usuario>/estadisticas', methods=['GET'])
+def estadisticas_usuario(id_usuario):
+    # Datos de MongoDB (NoSQL)
+    usuario = collection_usuarios.find_one({'id': id_usuario}, {'_id': 0})
+    if not usuario:
+        return respuesta_error("Usuario no encontrado")
+
+    leads_count = collection_leads.count_documents({'id_usuario': id_usuario})
+    asesorias_count = collection_asesorias.count_documents({'id_usuario': id_usuario})
+
+    # Datos de SQLite (SQL)
+    with get_db() as conn:
+        logs = conn.execute('SELECT COUNT(*) as total_logs, MAX(fecha) as ultima_interaccion FROM logs_syra WHERE id_usuario = ?',
+                           (id_usuario,)).fetchone()
+
+    return respuesta_ok({
+        "usuario": usuario,
+        "estadisticas": {
+            "leads_generados": leads_count,
+            "asesorias_agendadas": asesorias_count,
+            "interacciones_syra": logs['total_logs'],
+            "ultima_interaccion_syra": logs['ultima_interaccion']
+        }
+    }, "Estadísticas combinadas SQL + NoSQL")
 
 @app.route('/api/syra', methods=['POST'])
 def syra():
     data = request.get_json()
 
     mensaje = data.get("mensaje", "").lower()
+    id_usuario = data.get("id_usuario")  # Nuevo campo opcional
 
     if "precio" in mensaje:
         respuesta = "Nuestros servicios se adaptan a tu clínica. Agenda una asesoría 😉"
@@ -144,6 +213,13 @@ def syra():
         respuesta = "Denova transforma clínicas con alineadores 🚀"
     else:
         respuesta = "Cuéntame más y te ayudo 😉"
+
+    # Guardar log en SQL
+    if id_usuario:
+        with get_db() as conn:
+            conn.execute('INSERT INTO logs_syra (id_usuario, mensaje, respuesta) VALUES (?, ?, ?)',
+                        (id_usuario, mensaje, respuesta))
+            conn.commit()
 
     return respuesta_ok({
         "mensaje_usuario": mensaje,

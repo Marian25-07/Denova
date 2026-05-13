@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Denova | Growth for Dental Clinics</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #0d6efd;
+      --brand-dark: #0b5ed7;
+      --neutral: #27303f;
+      --surface: #f8f9ff;
+      --card: #ffffff;
+      --text-soft: #6c757d;
+    }
+
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      color: var(--neutral);
+      background: #fafbff;
+      overflow-x: hidden;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .hero {
+      min-height: 90vh;
+      padding-top: 4rem;
+      background: linear-gradient(180deg, rgba(13,110,253,0.08) 0%, rgba(248,249,255,0.6) 100%);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.75rem, 4vw, 4.5rem);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      max-width: 640px;
+    }
+
+    .feature-icon {
+      width: 3rem;
+      height: 3rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 1rem;
+      background: rgba(13,110,253,0.1);
+      color: var(--brand);
+      font-size: 1.25rem;
+      margin-right: 1rem;
+    }
+
+    .section-title {
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      color: var(--brand);
+    }
+
+    .card-spotlight {
+      border: none;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+      border-radius: 1.5rem;
+    }
+
+    .testimonial-card {
+      border: 1px solid rgba(13,110,253,0.12);
+      border-radius: 1.25rem;
+      background: #fff;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 1.5rem;
+      bottom: 1.5rem;
+      z-index: 999;
+      background: #25d366;
+      color: #fff;
+      width: 3.75rem;
+      height: 3.75rem;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 18px 30px rgba(37,211,102,0.28);
+      transition: transform 0.18s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.05);
+      text-decoration: none;
+    }
+
+    .blog-card {
+      border: none;
+      border-radius: 1.25rem;
+      background: #fff;
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.08);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Denova</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#services">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#benefits">Beneficios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#success">Casos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#news">Blog</a></li>
+        </ul>
+        <a class="btn btn-outline-primary ms-lg-4" href="#cta">Agendar asesoría</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container py-5">
+      <div class="row align-items-center gy-5">
+        <div class="col-lg-6">
+          <p class="section-title mb-3">Tecnología para clínicas dentales</p>
+          <h1 class="fw-bold">Impulsa tu clínica con automatización, generación de leads y SYRA AI.</h1>
+          <p class="lead text-muted mt-4">Denova ayuda a clínicas dentales a crecer con sistemas inteligentes, seguimiento de clientes y asesoría estratégica diseñada para convertir más citas y fidelizar pacientes.</p>
+          <div class="d-flex flex-column flex-sm-row gap-3 mt-4">
+            <a href="#cta" class="btn btn-primary btn-lg">Agendar asesoría</a>
+            <a href="#services" class="btn btn-outline-primary btn-lg">Ver servicios</a>
+          </div>
+          <div class="mt-5 p-4 rounded-4 bg-white shadow-sm">
+            <div class="d-flex align-items-center">
+              <div class="feature-icon">🤖</div>
+              <div>
+                <h6 class="mb-1">SYRA AI Chatbot</h6>
+                <p class="mb-0 text-muted">Atiende lead y pacientes 24/7 con respuestas inteligentes y agendamiento automatizado.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 text-center">
+          <img src="https://images.unsplash.com/photo-1589758438368-7c6e730cb225?auto=format&fit=crop&w=900&q=80" alt="Dental automation" class="img-fluid rounded-4 shadow-lg" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="services" class="py-6">
+    <div class="container">
+      <div class="text-center mb-5">
+        <p class="section-title">Servicios</p>
+        <h2 class="fw-bold">Soluciones diseñadas para clínicas dentales modernas</h2>
+        <p class="text-muted mx-auto" style="max-width: 720px;">Desde automatización de procesos hasta generación de nuevos pacientes, nuestras herramientas ayudan a tu equipo a trabajar con mayor eficiencia y crecimiento.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-xl-3">
+          <div class="card card-spotlight p-4 h-100">
+            <div class="d-flex align-items-center mb-3">
+              <div class="feature-icon">⚙️</div>
+              <h5 class="mb-0">Automatización</h5>
+            </div>
+            <p class="text-muted">Optimiza procesos administrativos con recordatorios, confirmaciones y flujos automáticos para pacientes.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="card card-spotlight p-4 h-100">
+            <div class="d-flex align-items-center mb-3">
+              <div class="feature-icon">📈</div>
+              <h5 class="mb-0">Generación de leads</h5>
+            </div>
+            <p class="text-muted">Atrae más pacientes con campañas inteligentes y seguimiento automatizado de prospectos.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="card card-spotlight p-4 h-100">
+            <div class="d-flex align-items-center mb-3">
+              <div class="feature-icon">💬</div>
+              <h5 class="mb-0">Chatbot SYRA</h5>
+            </div>
+            <p class="text-muted">Atiende dudas, agenda citas y califica prospectos con una experiencia conversacional inteligente.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="card card-spotlight p-4 h-100">
+            <div class="d-flex align-items-center mb-3">
+              <div class="feature-icon">🧭</div>
+              <h5 class="mb-0">Asesoría estratégica</h5>
+            </div>
+            <p class="text-muted">Impulsa tu crecimiento con decisiones basadas en datos, métricas y asesoría experta para clínicas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="benefits" class="py-6 bg-white">
+    <div class="container">
+      <div class="row align-items-center gy-5">
+        <div class="col-lg-5">
+          <p class="section-title">Beneficios</p>
+          <h2 class="fw-bold">Resultados claros para tu clínica dental</h2>
+          <p class="text-muted">Implementa soluciones que elevan la eficiencia, mejoran la experiencia del paciente y generan más ingresos a partir de tus esfuerzos digitales.</p>
+        </div>
+        <div class="col-lg-7">
+          <div class="row g-4">
+            <div class="col-sm-6">
+              <div class="card border-0 shadow-sm p-4 h-100">
+                <h5>Mejor gestión de pacientes</h5>
+                <p class="text-muted">Reduce huecos en agenda y optimiza el seguimiento con recordatorios automatizados.</p>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card border-0 shadow-sm p-4 h-100">
+                <h5>Más citas y conversiones</h5>
+                <p class="text-muted">Convierte visitantes en pacientes mediante un proceso de atención digital eficiente.</p>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card border-0 shadow-sm p-4 h-100">
+                <h5>Atención 24/7 con SYRA</h5>
+                <p class="text-muted">Ofrece respuestas rápidas fuera de horario con un asistente digital inteligente.</p>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card border-0 shadow-sm p-4 h-100">
+                <h5>Decisiones basadas en datos</h5>
+                <p class="text-muted">Accede a métricas clave para mejorar campañas, retención y experiencia de pacientes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="success" class="py-6">
+    <div class="container">
+      <div class="text-center mb-5">
+        <p class="section-title">Casos de éxito</p>
+        <h2 class="fw-bold">Clínicas que crecieron con Denova</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card card-spotlight p-4 h-100">
+            <h5>Clínica Sonrisa Plus</h5>
+            <p class="text-muted">Aumentó las reservas en un 38% con campañas de lead generation y un flujo de clientes automatizado.</p>
+            <span class="badge bg-primary">+38% reservas</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card card-spotlight p-4 h-100">
+            <h5>Odontología Viva</h5>
+            <p class="text-muted">Redujo ausencias en un 22% tras integrar recordatorios automáticos y confirmaciones por WhatsApp.</p>
+            <span class="badge bg-primary">-22% ausencias</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="py-6 bg-white">
+    <div class="container">
+      <div class="text-center mb-5">
+        <p class="section-title">Testimonios</p>
+        <h2 class="fw-bold">Opiniones reales de nuestros clientes</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="testimonial-card p-4 h-100">
+            <p class="mb-4">"Gracias a Denova, nuestra agenda nunca ha estado tan llena. La asesoría y el chatbot han transformado nuestra atención al paciente."</p>
+            <div>
+              <strong>Dr. Laura Méndez</strong>
+              <p class="mb-0 text-muted">Clínica Dental Armonía</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial-card p-4 h-100">
+            <p class="mb-4">"El equipo de Denova nos ayudó a profesionalizar la digitalización de la clínica y a generar nuevos leads de forma constante."</p>
+            <div>
+              <strong>Lic. Andrés Castro</strong>
+              <p class="mb-0 text-muted">Odontología Viva</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial-card p-4 h-100">
+            <p class="mb-4">"SYRA responde rápido y nos deja más tiempo para concentrarnos en los pacientes. Es una solución moderna y confiable."</p>
+            <div>
+              <strong>Dra. Mariana Ruiz</strong>
+              <p class="mb-0 text-muted">Dental Care MX</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="news" class="py-6">
+    <div class="container">
+      <div class="text-center mb-5">
+        <p class="section-title">Blog & Noticias</p>
+        <h2 class="fw-bold">Novedades para clínicas dentales</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <article class="blog-card p-4 h-100">
+            <h5>5 estrategias para captar más pacientes</h5>
+            <p class="text-muted">Conoce cómo diseñar campañas digitales efectivas para atraer nuevos prospectos a tu clínica.</p>
+            <a href="#" class="text-primary">Leer más →</a>
+          </article>
+        </div>
+        <div class="col-md-4">
+          <article class="blog-card p-4 h-100">
+            <h5>Automatiza tu agenda sin perder cercanía</h5>
+            <p class="text-muted">Descubre cómo mantener un servicio cálido mientras mejoras la eficiencia operativa.</p>
+            <a href="#" class="text-primary">Leer más →</a>
+          </article>
+        </div>
+        <div class="col-md-4">
+          <article class="blog-card p-4 h-100">
+            <h5>SYRA: tu asistente dental inteligente</h5>
+            <p class="text-muted">Aprende cómo un chatbot puede responder preguntas frecuentes y agendar citas automáticamente.</p>
+            <a href="#" class="text-primary">Leer más →</a>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta" class="py-6 bg-primary text-white">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <p class="section-title text-white">Listos para crecer</p>
+          <h2 class="fw-bold">Transforma tu clínica con tecnología dental inteligente.</h2>
+          <p class="text-white-75">Hablemos de tu proyecto y construyamos juntos una estrategia para atraer pacientes, optimizar operaciones y potenciar ingresos.</p>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+          <a href="https://wa.me/1234567890" class="btn btn-light btn-lg">Agendar asesoría</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-5 bg-white border-top">
+    <div class="container text-center">
+      <p class="mb-1">© 2026 Denova. Tecnología para clínicas dentales.</p>
+      <p class="text-muted mb-0">Automatización, leads, SYRA AI y asesoría estratégica para clínicas que quieren crecer.</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/1234567890" class="whatsapp-float" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+      <path d="M13.601 2.326a7.591 7.591 0 0 0-10.741 0 7.592 7.592 0 0 0 0 10.741l-.756 2.77 2.867-.755a7.593 7.593 0 0 0 8.63-8.63zm-2.98 9.41c-.13.377-.6.71-1.04.796-.273.056-.506.078-1.056.014-.542-.064-1.293-.483-2.035-.982a9.9 9.9 0 0 1-1.936-1.553 7.212 7.212 0 0 1-1.113-1.36c-.18-.237-.34-.445-.34-.714 0-.258.133-.515.276-.82.145-.31.64-.854.877-1.126.233-.268.374-.322.63-.202.258.118 1.01.476 1.09.506.08.03.137.047.198-.047.06-.094.233-.346.32-.467.086-.118.174-.129.303-.07.128.06.847.396 1.02.468.17.07.284.107.33.171.047.063.047.232.004.358-.048.13-.176.35-.252.473-.08.122-.16.13-.294.084-.132-.043-.565-.212-1.08-.664-.4-.333-.67-.511-.75-.596-.074-.08-.008-.123.055-.187.057-.058.126-.15.188-.225.064-.075.084-.127.12-.213.04-.088.02-.166-.01-.23-.03-.063-.27-.656-.37-.89-.1-.237-.204-.206-.278-.21-.07-.004-.152-.005-.233-.005-.08 0-.211.03-.321.142-.116.115-.44.427-.44 1.04 0 .612.452 1.205.515 1.29.06.083.89 1.31 2.15 1.835.626.27 1.12.43 1.503.526.634.168 1.213.144 1.67.087.51-.062 1.56-.64 1.78-1.252.22-.613.22-1.14.155-1.252-.068-.112-.248-.17-.54-.295z"/>
+    </svg>
+  </a>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
